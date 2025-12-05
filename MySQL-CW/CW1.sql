@@ -11,3 +11,11 @@ VALUES ('1','William','23','Physics','78'),
       SELECT * FROM `students` WHERE grade=90;
 
       SELECT * FROM `students` WHERE grade BETWEEN 70 AND 90;
+
+
+
+
+SELECT column1, column2, COUNT(*) AS duplicate_count
+FROM students
+GROUP BY column1, column2
+HAVING COUNT(*) > 1;
