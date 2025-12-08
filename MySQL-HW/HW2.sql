@@ -11,12 +11,14 @@ SELECT * FROM `books_store` WHERE stock_status='Out of Stock' OR price>700;
 
 INSERT INTO `books_store`(`10% gst added`) VALUES ('275'),('880'),('1320'),('605');
 
-DROP TABLE books_store;
+
 
 SELECT title,price,'10%_gst_added' FROM books_store;
 
 SELECT title,price,stock_status FROM books_store
    ORDER BY price DESC;
+
+   -- syntax to delete a table-    DROP TABLE books_store; 
 
 
 
