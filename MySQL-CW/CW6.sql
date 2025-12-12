@@ -6,6 +6,13 @@ VALUES (1, 'Asha', 'Python', 85, 'asha@mail.com', '9876543210', 'Chennai', 5),
 (5, 'Divya', 'Python', 95, 'divya@mail.com', '9876543214', 'Mumbai', 4),
 (6, 'Manoj', 'JavaScript', 72, 'manoj@mail.com', '9876543215', 'Delhi', NULL);
 
+DELETE FROM course_platform 
+WHERE name IN('Ravi','Sneha','Manoj');
+
+INSERT INTO `course_platform`(`id`, `name`, `course`, `score`, `email`, `phone`, `city`, `bonus_points`)
+VALUES (2, 'Ravi', 'Python', 90, 'ravi@mail.com', '9876543211', 'Chennai', NULL),
+(3, 'Sneha', 'Java', 78, 'sneha@mail.com', '9876543212', 'Mumbai', NULL),
+(6, 'Manoj', 'JavaScript', 72, 'manoj@mail.com', '9876543215', 'Delhi', NULL);
 
 
 --Show the total number of students in each course.
@@ -25,6 +32,12 @@ FROM course_platform
 WHERE city IN ('Chennai', 'Mumbai');
 
 --Show the details of students who don’t have any bonus points.
+SELECT *
+FROM course_platform
+WHERE bonus_points IS NULL;
 
 
 --Combine the list of student names from Chennai and from Mumbai into a single column list (use UNION).
+SELECT name FROM course_platform WHERE city = 'Chennai'
+UNION
+SELECT name FROM course_platform WHERE city = 'Mumbai';
