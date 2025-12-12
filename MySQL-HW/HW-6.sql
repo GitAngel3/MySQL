@@ -8,9 +8,16 @@ VALUES(1, 'Raj', 'Chennai', 88, 5, 'Fitness'),
 (7, 'Latha', 'Pune', 87, NULL, 'Fitness');
 
 --Show the details of users whose score is greater than the average score across all users.
-
-
+SELECT *FROM user_perfomance
+WHERE score > (SELECT AVG(score) FROM user_perfomance);
 
 
 --Display the names of users who are participating in the same challenge as the user named 'Farah'.
+SELECT name FROM user_perfomance
+WHERE challenge = (
+    SELECT challenge 
+    FROM user_perfomance 
+    WHERE name = 'Farah'
+);
+
 
