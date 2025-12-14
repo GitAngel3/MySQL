@@ -5,12 +5,30 @@ INSERT INTO `movie_database`(`id`, `title`, `genre`, `release_year`, `rating`, `
 (5, 'Dunkirk', 'War', 2017, 7.9, 527);
 
 --Show only the movie title and its box_office collection but rename the column box_office as Earnings (in Cr).
+SELECT title, box_office AS 'Earnings (in Cr)'
+FROM movies;
+
 
 --Display the movie titles and rename them as Movie Title, along with their genre as Category.
+SELECT title AS 'Movie Title', genre AS 'Category'
+FROM movies;
+
 
 --Select all movies where genre is either 'Sci-Fi' or 'Action' using IN, and rename rating as IMDb Score.
+SELECT title, genre, rating AS 'IMDb Score'
+FROM movies
+WHERE genre IN ('Sci-Fi', 'Action');
+
 
 --Find movies released between 2008 and 2015 and rename the year column as Release.
+SELECT title, release_year AS 'Release'
+FROM movies
+WHERE release_year BETWEEN 2008 AND 2015;
+
 
 --Find out how many movies have a rating greater than 8.5 and rename the result as High Rated Movies
+SELECT COUNT(*) AS 'High Rated Movies'
+FROM movies
+WHERE rating > 8.5;
+
 
