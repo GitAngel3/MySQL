@@ -21,6 +21,7 @@ ALTER TABLE product
 ADD category VARCHAR(20);
 
 --the shop owner wants to remove all items from the products table without deleting the table itself.
-DELETE FROM product product_id,product_name,price,category;
+TRUNCATE TABLE products;
 
 --Finally, delete the entire database as it’s no longer needed.
+DROP DATABASE grocery_shop;
