@@ -1,27 +1,43 @@
---Create a new database called GroceryShop.
-CREATE DATABASE grocery_shop;
+INSERT INTO `course_platform`(`id`, `name`, `course`, `score`, `email`, `phone`, `city`, `bonus_points`)
+VALUES (1, 'Asha', 'Python', 85, 'asha@mail.com', '9876543210', 'Chennai', 5),
+(2, 'Ravi', 'Python', 90, 'ravi@mail.com', '9876543211', 'Chennai', NULL),
+(3, 'Sneha', 'Java', 78, 'sneha@mail.com', '9876543212', 'Mumbai', NULL),
+(4, 'Karan', 'Java', 88, 'karan@mail.com', '9876543213', 'Delhi', 2),
+(5, 'Divya', 'Python', 95, 'divya@mail.com', '9876543214', 'Mumbai', 4),
+(6, 'Manoj', 'JavaScript', 72, 'manoj@mail.com', '9876543215', 'Delhi', NULL);
+
+DELETE FROM course_platform 
+WHERE name IN('Ravi','Sneha','Manoj');
+
+INSERT INTO `course_platform`(`id`, `name`, `course`, `score`, `email`, `phone`, `city`, `bonus_points`)
+VALUES (2, 'Ravi', 'Python', 90, 'ravi@mail.com', '9876543211', 'Chennai', NULL),
+(3, 'Sneha', 'Java', 78, 'sneha@mail.com', '9876543212', 'Mumbai', NULL),
+(6, 'Manoj', 'JavaScript', 72, 'manoj@mail.com', '9876543215', 'Delhi', NULL);
 
 
+--Show the total number of students in each course.
+SELECT course, COUNT(*) AS total_students
+FROM course_platform
+GROUP BY course;
 
---Use that database.
---Create a table named products with the following details:
---product_id (number, should be the main identifier)
---product_name (text)
---price (number)
-CREATE TABLE product(
-product_id INT NOT NULL AUTO_INCREMENT,
-product_name VARCHAR(20) NOT NULL,
-price INT NOT NULL,
-PRIMARY KEY (product_id));
+--Show the average score for each course, but only for courses where the average score is more than 80
+SELECT course, AVG(score) AS average_score
+FROM course_platform
+GROUP BY course
+HAVING AVG(score) > 80;
+
+--Show names and scores of students who are from Chennai or Mumbai.
+SELECT name, score
+FROM course_platform
+WHERE city IN ('Chennai', 'Mumbai');
+
+--Show the details of students who don’t have any bonus points.
+SELECT *
+FROM course_platform
+WHERE bonus_points IS NULL;
 
 
-
---Later, you are asked to add a new column called category (text) to the same table.
-ALTER TABLE product
-ADD category VARCHAR(20);
-
---the shop owner wants to remove all items from the products table without deleting the table itself.
-TRUNCATE TABLE products;
-
---Finally, delete the entire database as it’s no longer needed.
-DROP DATABASE grocery_shop;
+--Combine the list of student names from Chennai and from Mumbai into a single column list (use UNION).
+SELECT name FROM course_platform WHERE city = 'Chennai'
+UNION
+SELECT name FROM course_platform WHERE city = 'Mumbai';

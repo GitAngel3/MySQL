@@ -1,16 +1,21 @@
-INSERT INTO `products`(`id`, `name`, `category`, `price`, `in_stock`) 
-VALUES ('1','Rice','grocery','450 price_with_tax','yes'),
-       ('2','TShirt','dress','350', 'yes'),
-       ('3','Watch','lifestyle','2000','yes'),
-       ('4','A4Sheets','stationary','200','yes'),
-       ('5','Mobilephone','electronics','25000 price_with_tax','yes');
+INSERT INTO `students`(`id`, `name`, `age`, `department`, `grade`) 
+VALUES ('1','William','23','Physics','78'),
+      ('2','Steffy','21','Chemistry','80'),
+      ('3','John','22','Biology','82'),
+      ('4','Angel','23','Computer Science','80');
 
-   SELECT DISTINCT id,name,category,price,in_stock FROM products;
-   SELECT * FROM `products` WHERE in_stock=('yes') AND price<500;
+      SELECT * FROM `students` WHERE age>20;
 
-   SELECT * FROM `products` WHERE in_stock=('no') AND price>1000;
+      SELECT * FROM `students` WHERE department IN('Computer Science','Physics'); 
 
-   SELECT name,price FROM products ORDER BY price DESC;
+      SELECT * FROM `students` WHERE grade=90;
 
-   SELECT name,price,price * 1.18 AS price_with_tax
-FROM products;
+      SELECT * FROM `students` WHERE grade BETWEEN 70 AND 90;
+
+
+
+
+SELECT column1, column2, COUNT(*) AS duplicate_count
+FROM students
+GROUP BY column1, column2
+HAVING COUNT(*) > 1;

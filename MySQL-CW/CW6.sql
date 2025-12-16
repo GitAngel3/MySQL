@@ -1,43 +1,34 @@
-INSERT INTO `course_platform`(`id`, `name`, `course`, `score`, `email`, `phone`, `city`, `bonus_points`)
-VALUES (1, 'Asha', 'Python', 85, 'asha@mail.com', '9876543210', 'Chennai', 5),
-(2, 'Ravi', 'Python', 90, 'ravi@mail.com', '9876543211', 'Chennai', NULL),
-(3, 'Sneha', 'Java', 78, 'sneha@mail.com', '9876543212', 'Mumbai', NULL),
-(4, 'Karan', 'Java', 88, 'karan@mail.com', '9876543213', 'Delhi', 2),
-(5, 'Divya', 'Python', 95, 'divya@mail.com', '9876543214', 'Mumbai', 4),
-(6, 'Manoj', 'JavaScript', 72, 'manoj@mail.com', '9876543215', 'Delhi', NULL);
+INSERT INTO `books_online`(`id`, `title`, `author`, `genre`, `price`, `copies_sold`) 
+VALUES (1, 'The Silent Patient', 'Alex Michaelides', 'Thriller', 399.00, 1200),
+(2, 'Atomic Habits', 'James Clear', 'Self-help', 499.00, 2000),
+(3, 'The Psychology of Money', 'Morgan Housel', 'Finance', 350.00, 1800);
 
-DELETE FROM course_platform 
-WHERE name IN('Ravi','Sneha','Manoj');
+--Add the following 2 books into the bestsellers table:
+INSERT INTO `bestsellers_books_online`(`id`, `title`, `author`, `genre`, `price`, `copies_sold`)
+VALUES (4, 'Ikigai', 'Francesc Miralles', 'Philosophy', 300.00, 2500),
+(5, 'Think Like a Monk', 'Jay Shetty', 'Self-help', 450.00, 2200);
 
-INSERT INTO `course_platform`(`id`, `name`, `course`, `score`, `email`, `phone`, `city`, `bonus_points`)
-VALUES (2, 'Ravi', 'Python', 90, 'ravi@mail.com', '9876543211', 'Chennai', NULL),
-(3, 'Sneha', 'Java', 78, 'sneha@mail.com', '9876543212', 'Mumbai', NULL),
-(6, 'Manoj', 'JavaScript', 72, 'manoj@mail.com', '9876543215', 'Delhi', NULL);
+--Show the list of all books from both tables, displaying only the title and author.
+SELECT title, author FROM books_online
+UNION ALL
+SELECT title, author FROM bestsellers;
 
+--Display all books from the books table where the price is greater than 400.
+SELECT * FROM books
+WHERE price > 400;
 
---Show the total number of students in each course.
-SELECT course, COUNT(*) AS total_students
-FROM course_platform
-GROUP BY course;
+--Show the average price of books in the books table.
+SELECT AVG(price) AS average_price
+FROM books_online;
 
---Show the average score for each course, but only for courses where the average score is more than 80
-SELECT course, AVG(score) AS average_score
-FROM course_platform
-GROUP BY course
-HAVING AVG(score) > 80;
-
---Show names and scores of students who are from Chennai or Mumbai.
-SELECT name, score
-FROM course_platform
-WHERE city IN ('Chennai', 'Mumbai');
-
---Show the details of students who don’t have any bonus points.
-SELECT *
-FROM course_platform
-WHERE bonus_points IS NULL;
+--Display the number of books in the books table using a count.
+SELECT COUNT(*) AS total_books
+FROM books_onlineo;
 
 
---Combine the list of student names from Chennai and from Mumbai into a single column list (use UNION).
-SELECT name FROM course_platform WHERE city = 'Chennai'
-UNION
-SELECT name FROM course_platform WHERE city = 'Mumbai';
+--Show the title and author from books table with aliases Book Title and Written By.
+SELECT title AS "Book Title",
+       author AS "Written By"
+FROM books;
+
+

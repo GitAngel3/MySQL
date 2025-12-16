@@ -1,12 +1,16 @@
-INSERT INTO `online_bookstore`(`book_id`, `title`, `author`, `price`, `stock`) 
-    VALUES ('1','Learn SQL','John Smith','400','10'),
-           ('2','Mastering Python','Jane Doe','600','5'),
-           ('3', 'HTML & CSS Basics', 'Alan Webb', '300', '8');
+INSERT INTO `products`(`id`, `name`, `category`, `price`, `in_stock`) 
+VALUES ('1','Rice','grocery','450 price_with_tax','yes'),
+       ('2','TShirt','dress','350', 'yes'),
+       ('3','Watch','lifestyle','2000','yes'),
+       ('4','A4Sheets','stationary','200','yes'),
+       ('5','Mobilephone','electronics','25000 price_with_tax','yes');
 
-           
-    UPDATE online_bookstore
-SET price='450',stock=12;
+   SELECT DISTINCT id,name,category,price,in_stock FROM products;
+   SELECT * FROM `products` WHERE in_stock=('yes') AND price<500;
 
-UPDATE online_bookstore
-SET stock='3'
-WHERE price>500;
+   SELECT * FROM `products` WHERE in_stock=('no') AND price>1000;
+
+   SELECT name,price FROM products ORDER BY price DESC;
+
+   SELECT name,price,price * 1.18 AS price_with_tax
+FROM products;
