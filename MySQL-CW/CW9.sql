@@ -13,7 +13,9 @@ VALUES (101,'Alice',1),
 (102,'Bob',2),
 (103,'Charlie',NULL);
 
---Show the list of all books along with the name of the person who borrowed them (if borrowed).
+--Show the list of all books along with the name of the person who borrowed them (if borrowed)
+SELECT books.book_id, books.title, borrowers.name AS borrower_name;
+
 
 --Show the list of all borrowers along with the book details they borrowed (if any).
 

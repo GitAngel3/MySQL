@@ -25,3 +25,7 @@ TRUNCATE TABLE products;
 
 --Finally, delete the entire database as it’s no longer needed.
 DROP DATABASE grocery_shop;
+
+
+
+
