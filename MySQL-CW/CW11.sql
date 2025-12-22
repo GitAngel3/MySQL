@@ -10,7 +10,7 @@ CREATE TABLE authors_11
 --Create another table named books with the following:
 --book_id which should also increase automatically title of the book
 --author_id which connects each book to an author
-CREATE TABLE boobs_11
+CREATE TABLE books_11
 (book_id INT AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(20),
  author_id INT,
