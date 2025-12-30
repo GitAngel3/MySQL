@@ -21,7 +21,7 @@ CREATE TABLE Exam (
     id INT ,
     employee_id INT,
     exam_status VARCHAR(10),
-FOREIGN KEY (id) REFERENCES employees(id));
+FOREIGN KEY (employee_id) REFERENCES employees(id));
 
 INSERT INTO `exam`(`id`, `Employee_id`, `exam_status`)
 VALUES (1,2,'Pass'),
@@ -34,8 +34,6 @@ VALUES (1,2,'Pass'),
 (8,9,'Pass'),
 (9,10,'Pass');
 
-
---Write a query to get the list of employees who took more than 5 leaves and are in sales department
 SELECT * FROM Employees
 WHERE Leaves > 5 AND Department = 'Sales';
 
@@ -54,15 +52,12 @@ GROUP BY Department
 HAVING SUM(Leaves) > 10;
 
 
-SELECT * from exam
+SELECT Name,exam_status from exam
 inner join employees 
 on employees.id = exam.id 
 where exam_status = 'Pass';
 
-SELECT name,id
-FROM employees
-WHERE id NOT IN (SELECT id FROM exam);
---using join
+
 SELECT * from employees e 
 left join exam l on e.id = l.employee_id 
 where l.id is null

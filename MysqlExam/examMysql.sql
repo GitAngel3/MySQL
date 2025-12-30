@@ -126,6 +126,8 @@ left join exam l on e.id = l.employee_id
 where l.id is null
 
 SELECT * from employees 
+
+
 inner join exam 
 on employees.id = exam.id 
 where employee_id = null;
@@ -135,3 +137,51 @@ FROM employees e
 LEFT JOIN exam ex
 ON e.id = ex.employee_id
 WHERE ex.employee_id IS NULL;
+
+
+
+ALTER TABLE table_name
+ADD FOREIGN KEY (column_name) REFERENCES parent_table(column_name); 
+
+ALTER TABLE employee
+ADD PRIMARY KEY(id);
+
+---123
+CREATE TABLE Exam (
+    id INT,
+    employee_id INT,
+    exam_status VARCHAR(10),
+    FOREIGN KEY (id) REFERENCES Employee(id)
+);
+
+
+-----op
+
+
+SELECT * FROM Employees
+WHERE Leaves > 5 AND Department = 'Sales';
+
+
+SELECT COUNT(*) AS NumberOfEmployees FROM Employees
+WHERE Department = 'Operations';
+
+
+SELECT Department,COUNT(*)  FROM Employees
+GROUP BY Department;
+
+
+SELECT Department, SUM(Leaves) AS Total_leave
+FROM employees
+GROUP BY Department
+HAVING SUM(Leaves) > 10;
+
+
+SELECT * from exam
+inner join employees 
+on employees.id = exam.id 
+where exam_status = 'Pass';
+
+SELECT name,id
+FROM employees
+WHERE id NOT IN (SELECT id FROM exam);
+
